@@ -1,0 +1,130 @@
+{% extends "layouthomepage.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block page %}Home Page{% endblock %}
+
+{% block content %}
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Add your custom CSS styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+        }
+        .main {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+        }
+        .search-bar {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            display: flex;
+        }
+        .search-bar input[type="text"] {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 8px;
+        }
+        .search-bar button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .user-profile i {
+            font-size: 1.2rem;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+        .card h2 {
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #777;
+            margin-bottom: 20px;
+        }
+        .card button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .card button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="main">
+            <div class="logo">Workout remixer App</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Search workouts...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-profile">
+                <div>Welcome, {{ current_user.username }}</div>
+                <i class="fas fa-user"></i>
+            </div>            
+        </div>
+    </header>
+    <div class="buttons">
+        <div class="card">
+            <h2>Create Routine</h2>
+            <p>Click here to create a new routine.</p>
+            <button onclick="window.location.href='/create_routine'">Create Routine</button>
+        </div>
+        <div class="card">
+            <h2>Browse Routines</h2>
+            <p>Click here to browse existing routines.</p>
+            <button onclick="window.location.href='/browse_routines'">Browse Routines</button>
+        </div>
+        <div class="card">
+            <h2>Browse Workouts</h2>
+            <p>Click here to browse existing workouts.</p>
+            <button onclick="window.location.href='/browse_workouts'">Browse Workouts</button>
+        </div>
+    </div>
+</body>
+{% endblock %}

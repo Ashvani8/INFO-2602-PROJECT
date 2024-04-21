@@ -30,4 +30,8 @@ def update_user(id, username):
         db.session.add(user)
         return db.session.commit()
     return None
+
+def initialize():
+    # Add any initialization logic here, if needed
+    pass
     

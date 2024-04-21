@@ -1,5 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, send_from_directory, jsonify
-from App.controllers import create_user, initialize
+from App.models import db
+from App.controllers import create_user
 
 index_views = Blueprint('index_views', __name__, template_folder='../templates')
 
@@ -9,7 +10,9 @@ def index_page():
 
 @index_views.route('/init', methods=['GET'])
 def init():
-    initialize()
+    db.drop_all()
+    db.create_all()
+    create_user('bob', 'bobpass',1)
     return jsonify(message='db initialized!')
 
 @index_views.route('/health', methods=['GET'])
