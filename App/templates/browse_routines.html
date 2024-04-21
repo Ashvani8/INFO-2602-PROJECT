@@ -1,0 +1,28 @@
+<!-- browse_routines.html -->
+{% extends "layouthomepage.html" %}
+
+{% block title %}Browse Routines{% endblock %}
+
+{% block page %}Browse Routines{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Browse Routines</h1>
+    {% if routines %}
+    <div class="routine-list">
+        {% for routine in routines %}
+        <div class="routine">
+            <h2>{{ routine.name }}</h2>
+            <p><strong>Type:</strong> {{ routine.type }}</p>
+            <p><strong>Muscle:</strong> {{ routine.muscle }}</p>
+            <p><strong>Equipment:</strong> {{ routine.equipment }}</p>
+            <p><strong>Difficulty:</strong> {{ routine.difficulty }}</p>
+            <p><strong>Instructions:</strong> {{ routine.instructions }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No routines found.</p>
+    {% endif %}
+</div>
+{% endblock %}

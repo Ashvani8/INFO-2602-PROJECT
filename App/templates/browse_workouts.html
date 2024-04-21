@@ -1,0 +1,37 @@
+{% extends "tablelayout.html" %}
+
+{% block title %}Browse Workouts{% endblock %}
+
+{% block page %}
+    <h1>Browse Workouts</h1>
+
+    <!-- Table for displaying CSV data -->
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Exercise Type</th>
+                <th>Body Part</th>
+                <th>Equipment</th>
+                <th>Level</th>
+                <th>Rating</th>
+                <th>Rating Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exercise in exercises %}
+            <tr>
+                <td>{{ exercise.title }}</td>
+                <td>{{ exercise.desc }}</td>
+                <td>{{ exercise.exercise_type }}</td>
+                <td>{{ exercise.body_part }}</td>
+                <td>{{ exercise.equipment }}</td>
+                <td>{{ exercise.level }}</td>
+                <td>{{ exercise.rating }}</td>
+                <td>{{ exercise.rating_desc }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

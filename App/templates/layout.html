@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+  <head>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+      body, html {
+          height: 100%;
+          margin: 0;
+      }
+      .image-side {
+          background-image: url('https://images.unsplash.com/photo-1632781297772-1d68f375d878?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+          background-size: cover;
+          background-position: center;
+          height: calc(100vh - 64px); /* Adjust for navbar height */
+      }
+      .login-side {
+          height: calc(100vh - 64px); /* Adjust for navbar height */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .login-form {
+            width: 100%;
+            padding-left: 20%; /* Increased left padding to push form to the right */
+            padding-right: 10%;
+        }
+  </style>
+
+  </head>
+  <body>
+    
+      <nav class="black">
+          <div class="nav-wrapper">
+              <a href="#!" class="brand-logo center">{% block page %}{% endblock %}</a>
+            </div>
+          </nav>
+          <div class="row" style="margin: 0;">
+            <div class="col s12 m6 image-side">
+                <!-- Image is set as background -->
+            </div>
+          <div class="valign-wrapper" style="height: calc(100vh - 64px);"> <!-- Adjusting height to fill the screen except for navbar -->
+            <div class="container" style="width: 100%;">
+                <div class="row" style="margin:0;">
+                    <div class="col s12 m10 login-side"> <!-- This pushes the form to the right half of the screen -->
+                        <form method="POST" action="/login" class="login-form">
+                            <div class="input-field" style="margin-bottom: 30px;">
+                                <input id="username" name="username" type="text" class="validate" style="font-size: 20px; height: 3rem; padding: 0 12px;" required>
+                                <label for="username" style="font-size: 20px;">Username</label>
+                            </div>
+                            <div class="input-field" style="margin-bottom: 30px;">
+                                <input id="password" name="password" type="password" class="validate" style="font-size: 20px; height: 3rem; padding: 0 12px;" required>
+                                <label for="password" style="font-size: 20px;">Password</label>
+                            </div>
+                            <div style="text-align: center; margin-bottom: 30px;">
+                                <button type="submit" class="btn waves-effect waves-light" style="font-size: 20px; height: 3rem; line-height: 3rem;">Login</button>
+                            </div>
+                            <p style="text-align: center; font-size: 20px;">Don't have an account? <a href="/signup" style="font-size: 20px;">Sign Up</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+        <style>
+            .navbar-form label {
+                color: white !important;
+            }
+        </style>
+        
+        <div class="container" id="content">{% block content %}{% endblock %}</div>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+        <script>
+            M.AutoInit();
+        
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            M.toast({html: '{{message}}'})
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </script>
+        </body>
+        </html>

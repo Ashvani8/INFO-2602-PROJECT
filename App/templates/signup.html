@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Signup Page</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+        .image-side {
+            background-image: url('https://images.unsplash.com/photo-1632781297772-1d68f375d878?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90oy1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            width: 35%;
+            height: 100vh;
+            float: left;
+        }
+        .form-container {
+            width: 30%;
+            height: 100vh;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        .signup-form {
+            width: 100%;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .input-field {
+            width: 90%;
+        }
+        nav {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body>
+    <nav class="black">
+        <div class="nav-wrapper">
+            <a href="#!" class="brand-logo center">Signup Page</a>
+        </div>
+    </nav>
+    <div style="position: relative; width: 100%; height: 100vh;">
+        <div class="image-side">
+            <!-- Left image background -->
+        </div>
+        <div class="form-container">
+            <form method="POST" action="/signup" class="signup-form">
+                <div class="input-field">
+                    <input id="username" type="text" class="validate" required>
+                    <label for="username">Username</label>
+                </div>
+                <div class="input-field">
+                    <input id="password" type="password" class="validate" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="input-field">
+                    <input id="confirm_password" type="password" class="validate" required>
+                    <label for="confirm_password">Confirm Password</label>
+                </div>
+                <div class="input-field">
+                    <select id="level" required>
+                        <option value="" disabled selected>Choose your level</option>
+                        <option value="1">Beginner</option>
+                        <option value="2">Intermidiate</option>
+                        <option value="3">Expert</option>
+                    </select>
+                    <label for="level">Level</label>
+                </div>
+                <div class="center">
+                    <button type="submit" class="btn waves-effect waves-light">Sign Up</button>
+                    <p>Already have an account? <a href="/login">Login here</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="image-side">
+            <!-- Right image background -->
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var elems = document.querySelectorAll('select');
+            var instances = M.FormSelect.init(elems, {});
+        });
+        M.AutoInit();
+    </script>
+</body>
+</html>
