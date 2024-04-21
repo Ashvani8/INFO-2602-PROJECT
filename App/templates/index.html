@@ -1,9 +1,0 @@
-{% extends "layout.html" %}
-{% block title %}The Workout Planner{% endblock %}
-{% block page %}The Workout Planner{% endblock %}
-
-{% block content %}
-    {% if is_authenticated %}
-        <p>Welcome {{current_user.username}}</p>
-    {% endif %}
-{% endblock %}
