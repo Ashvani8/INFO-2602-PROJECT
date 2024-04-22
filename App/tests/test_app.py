@@ -1,9 +1,9 @@
 import os, tempfile, pytest, logging, unittest
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from main import create_app
-
 from App.main import create_app
+
+
 from App.database import db, create_db
 from App.models import User
 from App.controllers import (
