@@ -63,6 +63,7 @@ def user_tests_command(type):
         sys.exit(pytest.main(["-k", "UserIntegrationTests"]))
     else:
         sys.exit(pytest.main(["-k", "App"]))
+
     
 
 app.cli.add_command(test)
