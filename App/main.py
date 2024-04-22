@@ -11,21 +11,23 @@ def add_views(app):
         app.register_blueprint(view)
 
 def create_app(overrides={}):
-    app = Flask(__name__, static_url_path='/static')
+    app = Flask(__name__, static_url_path='/static', template_folder='templates')  # Add template_folder parameter
     load_config(app, overrides)
+    CORS(app)
     add_auth_context(app)
+    photos = UploadSet('photos', TEXT + DOCUMENTS + IMAGES)
+    configure_uploads(app, photos)
     add_views(app)
     init_db(app)
-    setup_jwt(app)
-
-    # Register the auth blueprint with a unique name
-    app.register_blueprint(auth_views, name='auth')
-
-    @app.errorhandler(404)
-    def page_not_found(error):
-        return render_template('404.html'), 404
+    jwt = setup_jwt(app)
+    
+    @jwt.invalid_token_loader
+    @jwt.unauthorized_loader
+    def custom_unauthorized_response(error):
+        return render_template('401.html', error=error), 401
 
     return app
+
 
 if __name__ == "__main__":
     app = create_app()
